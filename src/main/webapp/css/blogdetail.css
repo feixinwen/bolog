@@ -1,0 +1,37 @@
+/* 给博客详情页使用的样式文件 */
+
+/* 首先，我们需要给 blog-content 设置内边距*/
+/* 因为你们仔细看看模板，就会知道内容与边框是有一定的距离的 */
+.blog-content{
+    padding: 30px;
+}
+
+/* 标题 */
+.blog-content h3{
+    /* 标题居中 */
+    text-align: center;
+    /* 设置边距，因为标题与下面的时间是有距离的 */
+    /* .blog-content设置的边距 和这个没有关系！！！ */
+    /* .blog-content 是针对整体，.blog-content h3 是针对内容中的标题 */
+    /* 上下 20 px，左右0px */
+    padding: 20px 0;
+
+}
+
+/* 日期 */
+.blog-content .date{
+    /* 文本居中 */
+    text-align: center;
+    /* 字体颜色 */
+    color: rgb(204, 33, 204);
+    /* 针对日期设置间距 */
+    padding: 20px;
+}
+
+/* 自然段 */
+.blog-content p{
+    /* 每个自然段首行缩进 2个字符 */
+    text-indent: 2em;
+    /* 给每个自然段设置边距，使其每个自然段隔开 */
+    padding: 10px 0;
+}

@@ -1,0 +1,102 @@
+/* 登录页面的专用样式文件 */
+
+.login-container{
+    /* 页面宽度 */
+    width: 100%;
+    /* 减去导航的高度 */
+    height: calc(100% - 50px);
+
+    /* 需要让里面的子元素，垂直水平居中，就会用到 flex */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+    /* 水平居中 */
+    justify-content: center;
+
+}
+
+.login-dialog{
+    /* 尺寸 */
+    width: 400px;
+    height: 350px;
+    background-color: rgba(255, 255, 255, 0.75);
+    /* 边框圆角 */
+    border-radius: 15px;
+}
+
+.login-dialog h3{
+    /* 文本居中 */
+    text-align: center;
+    /* 字体大小 */
+    font-size: 20px;
+    /* 间距 */
+    /* 上下 50 边距，左右苓边距 */
+    padding: 50px 0;
+
+}
+
+.login-dialog .row{
+    /* 尺寸 */
+    height: 50px;
+    width: 100%;
+    /* 使用弹性布局 */
+    /* 因为 类row，所拥有的元素都是 行内元素*/
+    /* 只要是涉及到行内元素，或者子元素的操作都可以使用弹性布局 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 针对 .login-dialog 中 span 标签 */
+.login-dialog .row span{
+    /* 把span 转化成块级元素，方便您设置尺寸 */
+    /* 因为行内元素设置尺寸，大部分操作都是不会生效的 */
+    display: block;
+    /* 尺寸 */
+    width: 100px;
+    /* 字体加粗 */
+    font-weight: 700;
+}
+
+/* 使用并集选择器，同时选择 用户名和密码的输入框 */
+#username,#password{
+    width: 200px;
+    height: 40px;
+    /* 去掉边框线 */
+    border: none;
+    /* 去掉轮廓线 */
+    outline: none;
+    /* 字体大小 */
+    font-size: 22px;
+    /* 文本垂直居中 */
+    line-height: 40px;
+    /* 设置 左内边距，让输入的数据与边框隔开 */
+    padding-left: 10px;
+    /* 设置边框圆角 */
+    border-radius: 15px;
+}
+
+.row button{
+    width: 300px;
+    height: 50px;
+    /* 背景颜色 */
+    background-color: rgb(21, 100, 21);
+    /* 字体颜色 */
+    color: white;
+    /* 字体大小 */
+    font-size: 20px;
+    /* 去掉边框线 */
+    border: none;
+    /* 去掉轮廓线 */
+    outline: none;
+    /* 边框圆角 */
+    border-radius: 20px;
+}
+
+.row button:active{
+    /* 背景颜色 */
+    background-color: white;
+    /* 字体颜色 */
+    color: black;
+}
+

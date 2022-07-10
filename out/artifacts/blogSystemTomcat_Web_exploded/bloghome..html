@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客主页</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/bologlist.css">
+</head>
+<body>
+<!-- 导航栏 -->
+<!-- 为了能够在后续过程中，添加样式等操作，建议都引入一个类属性 -->
+<div class="navigation">
+    <img src="./img/textt.jpg" alt="">
+    <span>我的博客系统</span>
+    <!-- 空白元素，用于站位置 -->
+    <div class="spacer"></div>
+    <a href="bloghome.html">主页</a>
+    <a href="writingblog.html">写博客</a>
+    <a href="#">注销</a>
+</div>
+<!-- 这里的 .container 作为页面的版心 -->
+<div class="container">
+    <!-- 左侧用户信息区 -->
+    <div class="left">
+        <!-- 表示整个用户信息区域 -->
+        <div class="card">
+            <img src="./img/textt.jpg" alt="">
+            <!-- &nbsp;  空格符 -->
+            <h3>Dark&nbsp;And&nbsp;Grey</h3>
+            <a href="#">github 地址</a>
+            <div class="counter">
+                <span>文章</span>
+                <span>分类</span>
+            </div>
+            <div class="counter">
+                <span>2</span>
+                <span>1</span>
+            </div>
+        </div>
+    </div>
+    <!-- 右侧内容区 -->
+    <div class="right">
+        <!-- 一个 blog 对应一篇博客 -->
+        <div class="blog">
+            <div class="title">
+                我的第一篇博客
+            </div>
+            <!-- 博客发布时间 -->
+            <div class="date">
+                2022-05-10 17:48:00
+            </div>
+            <!-- 博客内容摘要 -->
+            <div class="desc">
+                <!-- 输入 lorem 可以UI及生成一句话 -->
+                从今天起，争取卷死在读的各位，Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id numquam vitae voluptate, veniam ipsa placeat! Consectetur eligendi quia quibusdam, mollitia eos totam quod repellendus veritatis, iste natus odio nihil ea.
+            </div>
+            <!-- 注意！这里不能直接写 > 号 -->
+            <!-- 因为会被 HTML认为是标签，而导致无法识别 -->
+            <!-- 这里就需要用转义字符：大于号的转义字符 就是 &gt; -->
+            <a href="#">查看全文 &gt;&gt; </a>
+        </div>
+        <!-- 一个 blog 对应一篇博客 -->
+        <div class="blog">
+            <div class="title">
+                我的第二篇博客
+            </div>
+            <!-- 博客发布时间 -->
+            <div class="date">
+                2022-05-10 17:57:00
+            </div>
+            <!-- 博客内容摘要 -->
+            <div class="desc">
+                <!-- 输入 lorem 可以UI及生成一句话 -->
+                从今天起，争取卷死在读的各位，Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id numquam vitae voluptate, veniam ipsa placeat! Consectetur eligendi quia quibusdam, mollitia eos totam quod repellendus veritatis, iste natus odio nihil ea.
+            </div>
+            <!-- 注意！这里不能直接写 > 号 -->
+            <!-- 因为会被 HTML认为是标签，而导致无法识别 -->
+            <!-- 这里就需要用转义字符：大于号的转义字符 就是 &gt; -->
+            <a href="#">查看全文 &gt;&gt; </a>
+        </div>
+    </div>
+</div>
+<!-- 首先，要想使用 ajax，就需要引入依赖 jQuery -->
+<script src="js/jquery.min.js"></script>
+<script>
+    // 在页面加载的时候，通过 ajax 给服务器发送数据，获取博客列表信息，并且显示在页面上
+    // 这里我们通过函数来使用。
+    function getBlogList(){
+        $.ajax({
+            type: "get",
+            url: "blog?blogId=1",// Servlet Path
+            success: function(body){
+                //  获取到的body 已经是一个 json 数组，里面每个元素就是一个js对象
+                // 根据这个对象构造一个div
+                // 1、 先把 .right里面的内容给清空
+                // 换成我们从服务器中得到的“新鲜数据”
+                console.log(body)
+                let rightDiv = document.querySelector('.right');
+                rightDiv.innerHTML="";// 清空
+                //2、遍历 body，构造出一个个的 blogDiv
+                for(let blog of body){
+                    let blogDiv = document.createElement('div');
+                    blogDiv.className = "blog";// 引入CSS属性
+                    // 构造标题
+                    let titleDiv = document.createElement('div');
+                    titleDiv.innerHTML = blog.title;//获取标题
+                    titleDiv.className = "title";//引入CSS属性
+                    blogDiv.appendChild(titleDiv);//接回页面中
+                    // 构造发布时间
+                    let dateDiv = document.createElement('div');
+                    dateDiv.innerHTML = blog.postTime;
+                    dateDiv.className = "date";
+                    blogDiv.appendChild(dateDiv);
+                    // 构造正文的摘要
+                    let descDiv = document.createElement('div');
+                    descDiv.className = "desc";
+                    descDiv.innerHTML = blog.content;
+                    blogDiv.appendChild(descDiv);
+                    // 构造 查看全文
+                    let a = document.createElement('a');
+                    a.innerHTML = "查看全文 &gt;&gt;";
+                    //此处我们是希望点击之后，跳转到博客详情页
+                    // 这个跳转过程需要告知服务器要访问的是哪个博客的详情页
+                    //此时 blogId 的作用就体现出来了，blogId就是一篇博客的身份Id
+                    // 我们可以通过 URL中的查询字符串来表明博客的身份
+                    a.href = "blogdetail.html?blogId="  + blog.blogId;
+                    // 未来我们点击这个 a 标签
+                    //发送的HTTP请求里面就会包含要访问的页面，以及对应博客身份
+                    // 从而根据这个ID 找到 具体是那个博客，显示其内容
+                    blogDiv.appendChild(a);// 记入页面
+                    // 最后 把 blogDiv 接回到右侧区域
+                    // 也就是blogDiv 挂到 DOM 树上。
+                    rightDiv.appendChild(blogDiv);
+                }
+            },
+            error: function(){
+                alert("获取博客列表失败！")
+            }
+        });
+    }
+    getBlogList();// 调用函数
+    console.log(222
+    )
+</script>
+</body>
+</html>

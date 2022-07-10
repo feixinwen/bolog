@@ -1,0 +1,65 @@
+/* 这个文件中专门写和博客列表页相关的样式 */
+.blog{
+    /* blog的宽度 和 父元素right是一样的 */
+    width: 100%;
+    /* 高度如果不设置，就取决于内容高度的总和 */
+    /* 所以，我们这里不去设置 */
+    /* 设置 每一篇博客的间距，通过 设置内边距 */
+    padding: 20px;
+}
+
+/* 标题 */
+.blog .title{
+    /* 居中 */
+    text-align: center;
+    /* 字体大小 */
+    font-size: 22px;
+    /* 字体粗细 */
+    font-weight: bold;
+    /* 设置边距 */
+    /* 上边边距 10px，左右0px（因为blog里面已经设置了啦20px） */
+    padding: 10px 0;
+}
+
+/* 日期 */
+.blog .date{
+    /* 文本居中 */
+    text-align: center;
+    /* 字体颜色 */
+    color: rgb(204, 33, 204);
+    /* 边距 */
+    padding: 10px;
+}
+
+/* 自然段 */
+.blog .desc{
+    text-indent: 2em;
+}
+
+/* 查看按钮 */
+.blog a{
+    /* 将 a标签 设置为 块级元素，方便设置尺寸 和 边距 */
+    display: block;
+    /* 尺寸 */
+    width: 140px;
+    height: 40px;
+    /* 去掉下划线 */
+    text-decoration: none;
+    /* 字体颜色 */
+    color: black;
+    /* 文本内容居中 */
+    text-align: center;
+    /* 文本框垂直居中 */
+    line-height: 40px;
+    /* 文本框水平居中位置 */
+    margin: 10px auto;
+    /* 边框: 边框线条粗细2px，颜色：黑色，边框线条：实线 */
+    border: 2px black solid;
+    /* 如果想让变化的过程变得柔和一些，就可以加上过渡效果 */
+    transition: all 0.5s;
+}
+
+/* 伪类选择器 */
+.blog a:hover{
+    background-color: orange;
+}

@@ -1,0 +1,166 @@
+/* 放置一些各个页面都会用到的公共样式 */
+/* 导航栏就是属于每个页面都会用到的公共样式 */
+
+
+/* 首先，我们需要去掉浏览器样式 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 给整个页面加上背景 */
+html,body{
+    /* html 的父元素就是浏览器窗口 */
+    /* 此处的100%，意思是 html 元素的高度 和 浏览器一样高*/
+    /* body 的元素是 html */
+    /* 其意思不言而喻，就是 “继承父亲的财产”  */
+    height: 100%;
+
+    /* 加上背景图 */
+    /* .. 是指 当前 common 文件的父级目录 */
+    /* 我存放的图片的地方，就与它的父级目录是同一级 */
+    background-image: url(../image/preview.jpg);
+    /* 拒绝平铺 */
+    background-repeat: no-repeat;
+    /* 图片覆盖整个页面 */
+    background-size: cover;
+    /* 图片处于剧痛位置 */
+    background-position: center;
+}
+
+
+/* 导航栏样式 */
+.navigation{
+    width: 100%;
+    /* 一般这里的尺寸都是设计稿规定好了的 */
+    /* 但是这里并没有，所以这里的尺寸，自己决定 */
+    height: 50px;
+    /* 由于导航栏的背景颜色属于一种半透明的状态 */
+    /* 所以我们要使用 rgba 的方式来进行处理 */
+    /* 颜色你们自己发挥 */
+    /* 需要注意的 透明度alpha 是一个 0 - 1 之间数字*/
+    background-color: rgba(55,20,11, 0.6);
+    /* 由于里面的logo，标题，连接之类的都是水平一行来进行排列的 */
+    /* 所以，这里我们就需要用到弹性布局 */
+    display: flex;
+    /* 实现元素 垂直居中的效果。 */
+    align-items: center;
+    color: orange;
+
+}
+
+.navigation img{
+    /* 将图片缩小一段 */
+    /* 上期上下左右都留一点空位 */
+    width: 40px;
+    height: 40px;
+    /* 将图片设置为原型 */
+    border-radius: 50%;
+    /* 设置 内/外边距 */
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.navigation .spacer{
+    /* 相对于父元素的宽度，占比百分之70 */
+    width: 80%;
+}
+
+.navigation a{
+    /* 去掉下划线 */
+    text-decoration: none;
+    /* 设置标签之间的间距 */
+    /* 上下内边距0px，左右10px */
+    padding: 0 10px;
+    color: orange;
+}
+
+/* 接下来是 版心相关的样式 */
+
+.container{
+    /* 注意！既然要留有空白，那么宽度就不能是100% */
+    width: 1000px;
+    /* 版心的理想高度：页面高度 减去 导航栏的高度 */
+    height: calc(100% - 50px);
+    /* 水平居中 */
+    /* 上下外边距为 0，左右边距由浏览器自动调整 */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* 版心的左侧部分 */
+.container .left{
+    height: 100%;
+    width: 200px;
+    /* background-color: red; */
+}
+/* 版心的右侧部分 */
+.container .right{
+    height: 100%;
+    /* 父类container 的宽度为1000px */
+    /* 左侧栏占了200px */
+    width: 795px;
+    /* background-color: blue; */
+    /* 背景颜色 */
+    background-color: rgba(255, 255, 255,0.75);
+    /* 边框圆角 */
+    border-radius: 20px;
+    /* 处理溢出问题 */
+    /* 溢出了就滚动内容，没溢出就不滚动 */
+    overflow: auto;
+}
+
+/* 接下来实现 card 部分的样式 */
+.card{
+    /* 背景颜色 */
+    background-color: rgba(255,255,255, 0.75);
+    /* 背景区域圆角 */
+    border-radius: 20px;
+    /* 通过这里的内边距，就可以让图片水平居中 */
+    /* 这里设置的30像素，意思是指4个方向，都是30px */
+    /* 因为我们的图片长宽都是140px，而card的宽为200px */
+    /* 200 -140 == 60px，两边一平摊刚好 30 px */
+    /* 刚好能水平居中，而且上下空出30px */
+    padding: 30px;
+}
+
+.card img{
+    /* card 的宽度为 200px 【默认与父类 left 宽度相同】*/
+    /* 先把图片的尺寸速效 */
+    width: 140px;
+    height: 140px;
+    /* 将图片变成圆形形 */
+    border-radius: 50%;
+}
+
+.card h3{
+    text-align: center;
+    padding: 10px;
+}
+
+.card a{
+    /* 首先，先把 a 标签转化成 块级元素 */
+    /* 因为 a 默认是行内元素，行内元素的很多边距是没有效果的 */
+    display: block;
+    /* 文本居中 */
+    text-align: center;
+    /* 去掉下划线 */
+    text-decoration: none;
+    /* 字体颜色 */
+    color: rgb(64, 55, 55);
+    /* 间距 */
+    padding: 10px;
+}
+
+.card .counter{
+    /* 弹性布局，目的：为了更好的水平排列 */
+    display: flex;
+    /* 通过 justify-content: aroumd */
+    /* 来使用它们左右进行分离排列 */
+    justify-content: space-around;
+    padding: 5px;
+}
+

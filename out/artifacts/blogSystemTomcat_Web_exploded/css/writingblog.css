@@ -1,0 +1,75 @@
+/* 这是博客编辑页专用的样式文件 */
+
+/* 容器 */
+.blog-edit-container {
+    /* 尺寸 */
+    width: 1000px;
+    /* 页面高度 - 导航栏高度 */
+    height: calc(100% - 50px);
+    /* 水平居中 */
+    margin: 0 auto;
+
+}
+/* 先针对标题区 的 div 下手 */
+.blog-edit-container .title{
+    /* 与分类元素 .blog-edit-container 一样：1000px */
+    width: 100%;
+    /* 标题区域高度 */
+    height: 50px;
+    /* 为了方便调节尺寸，我们使用 弹性布局 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+    /* 使子元素 输入框 和 按钮 靠两边放置，中间留个缝 */
+    justify-content: space-between;
+}
+
+.blog-edit-container .title input{
+    /* 尺寸 */
+    /* 宽度我们要考虑一下 */
+    /* 总长度是1000px，我打算给按钮设置 100px 的宽度*/
+    /* 那么 输入的宽度就应该是 900px */
+    /* 但是模板中，两者是不能紧挨着的 */
+    /* 所以我给 890px */
+    width: 890px;
+    height: 40px;
+
+    /* 边框圆角 */
+    border-radius: 15px;
+    /* 去掉边框线 */
+    border: none;
+    /* 去掉轮廓线 */
+    outline: none;
+    /* 背景颜色 和 透明度 */
+    background-color: rgba(255, 255, 255, 0.75);
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.blog-edit-container .title button{
+    width: 100px;
+    height: 40px;
+    /* 背景颜色 */
+    background-color: rgb(240, 163, 21);
+    /* 字体颜色 */
+    color: white;
+    /* 去掉边框线 */
+    border: none;
+    /* 去掉轮廓线 */
+    outline: none;
+    /* 边框圆角 */
+    border-radius: 15px;
+}
+/* 点击时，按钮背景颜色为黑色 */
+.blog-edit-container .title button:active{
+    background-color: black;
+}
+
+#editor{
+    border-radius: 15px;
+    /* background-color 只是针对当前元素进行设置，不会影响到子元素 */
+    /* background-color: rgba(255, 255, 255, 0.75); */
+    /* opacity 会影响到子元素 */
+    /* 给最外面的父元素设置了透明，里面的元素也会一起半透明 */
+    opacity: 75%;
+}
