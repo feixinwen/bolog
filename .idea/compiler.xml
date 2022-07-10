@@ -9,5 +9,8 @@
         <module name="blogSystemTomcat" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="blogSystemTomcat" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
