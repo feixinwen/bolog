@@ -15,6 +15,7 @@ import java.util.List;
 @WebServlet("/blog")
 public class blogServlet extends HttpServlet {
     private ObjectMapper objectMapper = new ObjectMapper();
+
     // 这个方法用来获取到数据库中的博客列表
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
